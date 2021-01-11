@@ -1,11 +1,17 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-import { CounterState, counterReducer } from './counterReducer';
+import { InputState, inputReducer } from "./inputReducer";
+import { AircraftState, aircraftReducer } from "./aircraftReducer";
+import { UIState, uiReducer } from "./uiReducer";
 
 export interface RootState {
-    counter: CounterState;
+  aircraft: AircraftState;
+  input: InputState;
+  ui: UIState;
 }
 
 export const rootReducer = combineReducers<RootState | undefined>({
-    counter: counterReducer
+  aircraft: aircraftReducer,
+  input: inputReducer,
+  ui: uiReducer
 });
