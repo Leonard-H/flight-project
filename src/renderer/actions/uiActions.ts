@@ -12,7 +12,7 @@ export const setCurrentFormPageAction: ActionCreator<SetCurrentFormPageAction> =
   page: Page
 ) => ({
   type: SET_CURRENT_FORM_PAGE,
-  payload: { page }
+  payload: { page },
 });
 
 export type UIAction = SetCurrentFormPageAction;

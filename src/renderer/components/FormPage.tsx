@@ -1,4 +1,6 @@
 import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import React from "react";
 import { Dispatch } from "redux";
 import { RouterProps } from "react-router";
@@ -38,18 +40,19 @@ const FormPage = (Component: React.FC<RouterProps>) => {
       return (
         <div>
           <div>
-            <Button style={{ float: "left" }} onClick={handleBack}>
-              {"<"}
-            </Button>
+            <Button onClick={handleBack}>{"<"}</Button>
             <Button
-              style={{ float: "right" }}
               onClick={handleForward}
               disabled={props.nextButtonDisabled}
+              style={{ float: "right" }}
             >
               {">"}
             </Button>
           </div>
-          <Component {...props} />
+
+          <Row className="mt-3">
+            <Component {...props} />
+          </Row>
         </div>
       );
     }
@@ -62,11 +65,11 @@ function makeMapStateToProps() {
     return {
       nextButtonDisabled: getNextButtonDisabled(state),
       last: state.ui.form.pages.find(
-        page => page.id === state.ui.form.currentPage
+        (page) => page.id === state.ui.form.currentPage
       )?.last,
       next: state.ui.form.pages.find(
-        page => page.id === state.ui.form.currentPage
-      )?.next
+        (page) => page.id === state.ui.form.currentPage
+      )?.next,
     };
   };
 }
@@ -74,7 +77,7 @@ function makeMapStateToProps() {
 function mapDispatchToProps(dispatch: Dispatch<UIAction>) {
   return {
     setPage: (page: Page) =>
-      dispatch({ type: SET_CURRENT_FORM_PAGE, payload: { page } })
+      dispatch({ type: SET_CURRENT_FORM_PAGE, payload: { page } }),
   };
 }
 

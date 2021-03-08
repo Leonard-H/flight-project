@@ -19,18 +19,24 @@ export interface ClearAction extends Action {
   type: "CLEAR";
 }
 
-export const setUkAirport: ActionCreator<SetUkAirportAction> = () => ({
-  type: SET_UK_AIRPORT
+export const setUkAirport: ActionCreator<SetUkAirportAction> = (
+  code: string
+) => ({
+  type: SET_UK_AIRPORT,
+  payload: { code },
 });
 
-export const setOverseasAirport: ActionCreator<SetOverseasAirportAction> = () => ({
-  type: SET_OVERSEAS_AIRPORT
+export const setOverseasAirport: ActionCreator<SetOverseasAirportAction> = (
+  code: string
+) => ({
+  type: SET_OVERSEAS_AIRPORT,
+  payload: { code },
 });
 export const setNumberOfFirstClassSeats: ActionCreator<SetNumberOfFirstClassSeatsAction> = () => ({
-  type: SET_NUMBER_OF_FIRST_CLASS_SEATS
+  type: SET_NUMBER_OF_FIRST_CLASS_SEATS,
 });
 export const clear: ActionCreator<ClearAction> = () => ({
-  type: CLEAR
+  type: CLEAR,
 });
 
 export type InputAction =
