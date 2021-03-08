@@ -17,11 +17,15 @@ type Props = {
   airport: RootState["airport"];
   setUkAirport: (code: string) => void;
   setOverseasAirport: (code: string) => void;
+  ukAirportCode: string;
+  overseasAirportCode: string;
 };
 const SetAirports: React.FC<Props> = ({
   airport,
   setUkAirport,
   setOverseasAirport,
+  ukAirportCode,
+  overseasAirportCode,
 }) => {
   return (
     <Form>
@@ -33,10 +37,11 @@ const SetAirports: React.FC<Props> = ({
           custom
           size="lg"
           onChange={(e) => setUkAirport(e.target.value)}
+          value={ukAirportCode ? ukAirportCode : undefined}
         >
-          {airport.uk.map((airport) => (
-            <option value={airport.code} key={airport.code}>
-              {airport.name}
+          {airport.uk.map(({ code, name }) => (
+            <option value={code} key={code}>
+              {name}
             </option>
           ))}
         </Form.Control>
@@ -49,10 +54,11 @@ const SetAirports: React.FC<Props> = ({
           custom
           size="lg"
           onChange={(e) => setOverseasAirport(e.target.value)}
+          value={overseasAirportCode ? overseasAirportCode : undefined}
         >
-          {airport.overseas.map((airport) => (
-            <option value={airport.code} key={airport.code}>
-              {airport.name}
+          {airport.overseas.map(({ code, name }) => (
+            <option value={code} key={code}>
+              {name}
             </option>
           ))}
         </Form.Control>
@@ -64,6 +70,8 @@ const SetAirports: React.FC<Props> = ({
 const mapStateToProps = (state: RootState) => {
   return {
     airport: state.airport,
+    ukAirportCode: state.input.ukAirport,
+    overseasAirportCode: state.input.overseasAirport,
   };
 };
 

@@ -1,6 +1,5 @@
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import React from "react";
 import { Dispatch } from "redux";
 import { RouterProps } from "react-router";
@@ -51,7 +50,9 @@ const FormPage = (Component: React.FC<RouterProps>) => {
           </div>
 
           <Row className="mt-3">
-            <Component {...props} />
+            <div style={{ display: "block", margin: "0 auto" }}>
+              <Component {...props} />
+            </div>
           </Row>
         </div>
       );

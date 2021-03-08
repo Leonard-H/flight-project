@@ -11,11 +11,11 @@ export interface RemoveAction extends Action {
 }
 
 export const add: ActionCreator<AddAction> = () => ({
-  type: ADD
+  type: ADD,
 });
 
 export const remove: ActionCreator<RemoveAction> = () => ({
-  type: REMOVE
+  type: REMOVE,
 });
 
 export type AircraftAction = AddAction | RemoveAction;

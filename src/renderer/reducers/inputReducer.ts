@@ -3,12 +3,13 @@ import {
   InputAction,
   SET_UK_AIRPORT,
   SET_OVERSEAS_AIRPORT,
+  SET_AIRCRAFT_TYPE,
 } from "../actions/inputActions";
 
 export interface InputState {
   ukAirport: string;
   overseasAirport: string;
-  aircraftType: string;
+  aircraftId: string;
   numOfFirstClassSeats: number;
   numOfStandardClassSeats: number;
 }
@@ -16,7 +17,7 @@ export interface InputState {
 const initialState: InputState = {
   ukAirport: "",
   overseasAirport: "",
-  aircraftType: "",
+  aircraftId: "",
   numOfFirstClassSeats: -1,
   numOfStandardClassSeats: -1,
 };
@@ -30,6 +31,8 @@ export const inputReducer: Reducer<InputState> = (
       return { ...state, ukAirport: action.payload.code };
     case SET_OVERSEAS_AIRPORT:
       return { ...state, overseasAirport: action.payload.code };
+    case SET_AIRCRAFT_TYPE:
+      return { ...state, aircraftId: action.payload.id };
     default:
       return state;
   }

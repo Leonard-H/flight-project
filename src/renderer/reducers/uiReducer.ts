@@ -7,7 +7,7 @@ export enum Page {
   setAirports = "/form/set-airports",
   setAircraft = "/form/set-aircraft",
   setSeats = "/form/set-seats",
-  results = "/results"
+  results = "/results",
 }
 
 export interface UIState {
@@ -22,21 +22,20 @@ const initialState: UIState = {
     pages: [
       { id: Page.setAirports, last: Page.start, next: Page.setAircraft },
       { id: Page.setAircraft, last: Page.setAirports, next: Page.setSeats },
-      { id: Page.setSeats, last: Page.setAircraft, next: Page.results }
+      { id: Page.setSeats, last: Page.setAircraft, next: Page.results },
     ],
     currentPage:
-      Page[getCurrentPage(Page, location.hash.substr(1, location.hash.length))]
-  }
+      Page[getCurrentPage(Page, location.hash.substr(1, location.hash.length))],
+  },
 };
 
 export const uiReducer: Reducer<UIState, UIAction> = (
   state = initialState,
   action: UIAction
 ) => {
-  console.log(state.form.currentPage);
   switch (action.type) {
     case SET_CURRENT_FORM_PAGE:
-      return produce(state, state => {
+      return produce(state, (state) => {
         state.form.currentPage = action.payload.page;
       });
     default:
@@ -47,6 +46,6 @@ export const uiReducer: Reducer<UIState, UIAction> = (
 type pageKey = "start" | "setAirports" | "setAircraft" | "setSeats" | "results";
 
 function getCurrentPage(enum_: any, value: string): pageKey {
-  const keys = Object.keys(enum_).filter(x => enum_[x] === value);
+  const keys = Object.keys(enum_).filter((x) => enum_[x] === value);
   return keys.length > 0 ? ((keys[0] as any) as pageKey) : "start";
 }

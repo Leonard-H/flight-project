@@ -11,7 +11,7 @@ const makeGetNextButtonEnabled = () => {
       case Page.setAirports:
         return !Boolean(input.ukAirport && input.overseasAirport);
       case Page.setAircraft:
-        return !Boolean(input.aircraftType);
+        return !Boolean(input.aircraftId);
       case Page.setSeats:
         return Boolean(
           input.numOfFirstClassSeats + 1 || input.numOfStandardClassSeats + 1
