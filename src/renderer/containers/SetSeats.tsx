@@ -11,14 +11,17 @@ import {
 } from "../actions/inputActions";
 
 import { RootState } from "../reducers";
+import makeGetIsNumberOfFirstClassSeatsValid from "../computedValues/computedInputValues";
 
 type Props = {
   setNumberOfFirstClassSeats: (num: number) => void;
   numberOfFirstClassSeats: number;
+  isNumberOfFirstClassSeatsValid: boolean;
 };
 const SetSeats: React.FC<Props> = ({
   numberOfFirstClassSeats,
   setNumberOfFirstClassSeats,
+  isNumberOfFirstClassSeatsValid,
 }) => {
   return (
     <Form>
@@ -31,13 +34,18 @@ const SetSeats: React.FC<Props> = ({
         />
       </Form.Group>
       {numberOfFirstClassSeats}
+      {String(isNumberOfFirstClassSeatsValid)}
     </Form>
   );
 };
 
-const mapStateToProps = (state: RootState) => {
-  return {
-    numberOfFirstClassSeats: state.input.numberOfFirstClassSeats,
+const makeMapStateToProps = () => {
+  const getIsNumberOfFirstClassSeatsValid = makeGetIsNumberOfFirstClassSeatsValid();
+  return (state: RootState) => {
+    return {
+      numberOfFirstClassSeats: state.input.numberOfFirstClassSeats,
+      isNumberOfFirstClassSeatsValid: getIsNumberOfFirstClassSeatsValid(state),
+    };
   };
 };
 
@@ -48,4 +56,6 @@ const mapDispatchToProps = (dispatch: Dispatch<InputAction>) => {
   };
 };
 
-export default FormPage(connect(mapStateToProps, mapDispatchToProps)(SetSeats));
+export default FormPage(
+  connect(makeMapStateToProps, mapDispatchToProps)(SetSeats)
+);
