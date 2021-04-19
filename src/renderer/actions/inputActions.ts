@@ -21,6 +21,7 @@ export interface SetAircraftId extends Action {
 }
 export interface SetNumberOfFirstClassSeatsAction extends Action {
   type: "SET_NUMBER_OF_FIRST_CLASS_SEATS";
+  payload: { num: number };
 }
 export interface ClearAction extends Action {
   type: "CLEAR";
@@ -43,8 +44,11 @@ export const setAircraftId: ActionCreator<SetAircraftId> = (id: string) => ({
   type: SET_AIRCRAFT_TYPE,
   payload: { id },
 });
-export const setNumberOfFirstClassSeats: ActionCreator<SetNumberOfFirstClassSeatsAction> = () => ({
+export const setNumberOfFirstClassSeats: ActionCreator<SetNumberOfFirstClassSeatsAction> = (
+  num: number
+) => ({
   type: SET_NUMBER_OF_FIRST_CLASS_SEATS,
+  payload: { num },
 });
 export const clear: ActionCreator<ClearAction> = () => ({
   type: CLEAR,

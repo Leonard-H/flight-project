@@ -5,53 +5,46 @@ import { connect } from "react-redux";
 
 import FormPage from "../components/FormPage";
 
-import { InputAction, setAircraftId } from "../actions/inputActions";
+import {
+  InputAction,
+  setNumberOfFirstClassSeats,
+} from "../actions/inputActions";
 
 import { RootState } from "../reducers";
 
 type Props = {
-  aircrafts: RootState["aircraft"]["aircrafts"];
-  aircraftId: string;
-  setAircraftId: (id: string) => void;
+  setNumberOfFirstClassSeats: (num: number) => void;
+  numberOfFirstClassSeats: number;
 };
 const SetSeats: React.FC<Props> = ({
-  aircrafts,
-  aircraftId,
-  setAircraftId,
+  numberOfFirstClassSeats,
+  setNumberOfFirstClassSeats,
 }) => {
   return (
     <Form>
       <Form.Group controlId="aircraft">
-        <Form.Label>Choose Aircraft Type</Form.Label>
-        <Form.Control
-          as="select"
-          htmlSize={3}
-          custom
-          size="lg"
-          onChange={(e) => setAircraftId(e.target.value)}
-          value={aircraftId ? aircraftId : undefined}
-        >
-          {aircrafts.map(({ id, name }) => (
-            <option value={id} key={id}>
-              {name}
-            </option>
-          ))}
-        </Form.Control>
+        <Form.Label>Input Number of First Class Seats</Form.Label>
+        <input
+          type="number"
+          className="form-control"
+          onChange={(e) => setNumberOfFirstClassSeats(Number(e.target.value))}
+        />
       </Form.Group>
+      {numberOfFirstClassSeats}
     </Form>
   );
 };
 
 const mapStateToProps = (state: RootState) => {
   return {
-    aircrafts: state.aircraft.aircrafts,
-    aircraftId: state.input.aircraftId,
+    numberOfFirstClassSeats: state.input.numberOfFirstClassSeats,
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<InputAction>) => {
   return {
-    setAircraftId: (code: string) => dispatch(setAircraftId(code)),
+    setNumberOfFirstClassSeats: (num: number) =>
+      dispatch(setNumberOfFirstClassSeats(num)),
   };
 };
 
