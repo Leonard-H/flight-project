@@ -9,7 +9,7 @@ import { InputAction, setAircraftId } from "../actions/inputActions";
 
 import { RootState } from "../reducers";
 import Table from "react-bootstrap/esm/Table";
-import makeGetDistance from "../computedValues/computedAirportValues";
+import { makeGetDistance } from "../computedValues/computedAirportValues";
 
 type Props = {
   aircrafts: RootState["aircraft"]["aircrafts"];

@@ -4,7 +4,7 @@ import { RootState } from "../reducers";
 const getInput = (state: RootState) => state.input;
 const getOsAirports = (state: RootState) => state.airport.overseas;
 
-const makeGetDistance = () => {
+export const makeGetDistance = () => {
   return createSelector([getInput, getOsAirports], (input, osAirports) => {
     const osAirport = osAirports.find(
       ({ code }) => code === input.overseasAirport
@@ -17,5 +17,3 @@ const makeGetDistance = () => {
     return distance;
   });
 };
-
-export default makeGetDistance;

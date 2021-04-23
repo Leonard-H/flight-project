@@ -4,7 +4,7 @@ import { RootState } from "../reducers";
 const getInput = (state: RootState) => state.input;
 const getAircrafts = (state: RootState) => state.aircraft;
 
-const makeGetIsNumberOfFirstClassSeatsValid = () => {
+export const makeGetIsNumberOfFirstClassSeatsValid = () => {
   return createSelector([getInput, getAircrafts], (input, aircrafts) => {
     if (input.numberOfFirstClassSeats === 0) return true;
     const aircraft = aircrafts.aircrafts.find(
@@ -19,5 +19,3 @@ const makeGetIsNumberOfFirstClassSeatsValid = () => {
     );
   });
 };
-
-export default makeGetIsNumberOfFirstClassSeatsValid;

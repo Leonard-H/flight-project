@@ -5,7 +5,7 @@ import { Page } from "../reducers/uiReducer";
 const getInput = (state: RootState) => state.input;
 const getUIFormData = (state: RootState) => state.ui.form;
 
-const makeGetNextButtonEnabled = () => {
+export const makeGetNextButtonEnabled = () => {
   return createSelector([getInput, getUIFormData], (input, uiFormData) => {
     switch (uiFormData.currentPage) {
       case Page.setAirports:
@@ -14,12 +14,11 @@ const makeGetNextButtonEnabled = () => {
         return !Boolean(input.aircraftId);
       case Page.setSeats:
         return !Boolean(
-          input.numOfFirstClassSeats + 1 || input.numOfStandardClassSeats + 1
+          input.numberOfFirstClassSeats + 1 ||
+            input.numberOfStandardClassSeats + 1
         );
       default:
         return true;
     }
   });
 };
-
-export default makeGetNextButtonEnabled;

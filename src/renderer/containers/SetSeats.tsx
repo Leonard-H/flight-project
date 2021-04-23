@@ -11,7 +11,7 @@ import {
 } from "../actions/inputActions";
 
 import { RootState } from "../reducers";
-import makeGetIsNumberOfFirstClassSeatsValid from "../computedValues/computedInputValues";
+import { makeGetIsNumberOfFirstClassSeatsValid } from "../computedValues/computedInputValues";
 
 type Props = {
   setNumberOfFirstClassSeats: (num: number) => void;

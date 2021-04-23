@@ -5,7 +5,7 @@ import { Dispatch } from "redux";
 import { RouterProps } from "react-router";
 import { connect } from "react-redux";
 
-import makeGetNextButtonEnabled from "../computedValues/computedUIValues";
+import { makeGetNextButtonEnabled } from "../computedValues/computedUIValues";
 
 import { Page } from "../reducers/uiReducer";
 
