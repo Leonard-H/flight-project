@@ -24,8 +24,7 @@ const initialState: UIState = {
       { id: Page.setAircraft, last: Page.setAirports, next: Page.setSeats },
       { id: Page.setSeats, last: Page.setAircraft, next: Page.results },
     ],
-    currentPage:
-      Page[getCurrentPage(Page, location.hash.substr(1, location.hash.length))],
+    currentPage: Page.start,
   },
 };
 
@@ -42,10 +41,3 @@ export const uiReducer: Reducer<UIState, UIAction> = (
       return state;
   }
 };
-
-type pageKey = "start" | "setAirports" | "setAircraft" | "setSeats" | "results";
-
-function getCurrentPage(enum_: any, value: string): pageKey {
-  const keys = Object.keys(enum_).filter((x) => enum_[x] === value);
-  return keys.length > 0 ? ((keys[0] as any) as pageKey) : "start";
-}

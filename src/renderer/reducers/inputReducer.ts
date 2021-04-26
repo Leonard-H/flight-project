@@ -12,7 +12,6 @@ export interface InputState {
   overseasAirport: string;
   aircraftId: string;
   numberOfFirstClassSeats: number;
-  numberOfStandardClassSeats: number;
 }
 
 const initialState: InputState = {
@@ -20,7 +19,6 @@ const initialState: InputState = {
   overseasAirport: "",
   aircraftId: "",
   numberOfFirstClassSeats: -1,
-  numberOfStandardClassSeats: -1,
 };
 
 export const inputReducer: Reducer<InputState> = (
